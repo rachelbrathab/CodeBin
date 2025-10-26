@@ -1,0 +1,211 @@
+/* Import our font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+/* 1. Define all our colors as CSS variables */
+:root {
+  --font-main: 'Inter', sans-serif;
+  
+  /* Light Theme Colors */
+  --bg-light: #f4f7f6;
+  --bg-card-light: #ffffff;
+  --text-light: #222222;
+  --border-light: #ddd;
+  --bg-navbar-light: #ffffff;
+  --bg-hero-light: linear-gradient(145deg, #e9ecef, #f8f9fa); /* Subtle gradient */
+  --bg-input-light: #ffffff;
+
+  /* Dark Theme Colors */
+  --bg-dark: #121212; /* A deeper black */
+  --bg-card-dark: #1e1e1e; /* VS Code's editor color */
+  --text-dark: #f5f5f5;
+  --border-dark: #333;
+  --bg-navbar-dark: #1e1e1e;
+  --bg-hero-dark: linear-gradient(145deg, #2c3e50, #222); /* Subtle gradient */
+  --bg-input-dark: #2a2a2a;
+}
+
+/* 2. Apply the base styles to the body */
+body {
+  font-family: var(--font-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-image: radial-gradient(rgba(128, 128, 128, 0.15) 0.5px, transparent 0.5px);
+  background-size: 15px 15px;
+  min-height: 100vh;
+}
+
+/* 3. Create the theme-switching classes */
+body.light {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+body.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* 4. Center the main app content */
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* 5. Style components based on the theme */
+.navbar {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+body.light .navbar {
+  background-color: var(--bg-navbar-light) !important;
+  border-color: var(--border-light);
+}
+body.dark .navbar {
+  background-color: var(--bg-navbar-dark) !important;
+  border-color: var(--border-dark);
+}
+
+.card {
+  border: 1px solid;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+body.light .card {
+  background-color: var(--bg-card-light) !important;
+  border-color: var(--border-light);
+  color: var(--text-light) !important;
+}
+body.dark .card {
+  background-color: var(--bg-card-dark) !important;
+  border-color: var(--border-dark);
+  color: var(--text-dark) !important;
+}
+
+/* Style form inputs */
+body.light .form-control,
+body.light .form-select {
+  background-color: var(--bg-input-light);
+  color: var(--text-light);
+  border-color: #ccc;
+}
+body.dark .form-control,
+body.dark .form-select {
+  background-color: var(--bg-input-dark);
+  color: var(--text-dark);
+  border-color: var(--border-dark);
+}
+body.dark .form-control:focus,
+body.dark .form-select:focus {
+  background-color: var(--bg-input-dark);
+  color: var(--text-dark);
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+/* 6. A redesigned "Hero" section */
+.hero-section {
+  padding: 3rem 2rem;
+  margin-bottom: 2.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  transition: background 0.3s ease;
+  border: 1px solid;
+}
+body.light .hero-section {
+  background: var(--bg-hero-light);
+  border-color: var(--border-light);
+}
+body.dark .hero-section {
+  background: var(--bg-hero-dark);
+  border-color: var(--border-dark);
+}
+.hero-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #0d6efd;
+}
+
+/* 7. Polish the analysis list */
+.analysis-list .list-group-item {
+  /* Use CSS vars for border */
+  border: 1px solid var(--border-dark) !important;
+  padding: 1rem 1.25rem;
+  line-height: 1.6;
+  margin-bottom: -1px; /* Overlap borders */
+}
+body.light .analysis-list .list-group-item {
+   border-color: var(--border-light) !important;
+}
+
+.analysis-list small {
+  opacity: 0.8;
+}
+
+/* 8. Button Hover Effects */
+.btn-primary, .btn-success, .btn-secondary {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 9. Simple Footer Styles */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  border-top: 1px solid;
+}
+body.light .footer {
+  border-color: var(--border-light);
+  color: #6c757d;
+}
+body.dark .footer {
+  border-color: var(--border-dark);
+  color: #888;
+}
+
+/* 10. Language Icon Bar */
+.language-icon-bar {
+  padding-top: 2.25rem;
+  border-right: 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body.light .language-icon-bar {
+  border-color: var(--border-light);
+}
+body.dark .language-icon-bar {
+  border-color: var(--border-dark);
+}
+
+.lang-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  color: #888;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.lang-icon:hover {
+  transform: scale(1.2);
+  color: #aaa;
+}
+
+/* 11. Active state for the selected icon */
+.lang-icon.active {
+  transform: scale(1.25);
+}
+
+/* 12. Add brand colors for each active language! */
+.lang-icon.active.javascript { color: #f7df1e; }
+.lang-icon.active.python     { color: #3776ab; }
+.lang-icon.active.html       { color: #e34f26; }
+.lang-icon.active.css        { color: #1572b6; }
+.lang-icon.active.java       { color: #f89820; }
+.lang-icon.active.plaintext  { color: #0d6efd; }
